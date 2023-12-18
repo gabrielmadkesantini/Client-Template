@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+}
+
+.styledHeader {
+  border-bottom: solid 2px #000000;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.titleHeader {
+  margin: 15px;
+}
+
+.functionsHeader {
+  width: 100px;
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+}
