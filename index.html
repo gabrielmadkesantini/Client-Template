@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
+  <body ng-app="myApp" ng-controller="modalController">
     <header class="styledHeader">
       <div class="titleHeader">Lista de Clientes</div>
       <div class="functionsHeader">
@@ -17,25 +21,134 @@
     <main>
       <div class="listClients">
         <div class="gridTitles">
-          <strong class="grid-tile">Nome</strong>
-          <strong class="grid-tile">Código</strong>
-          <strong class="grid-tile">Endereço</strong>
-          <strong class="grid-tile">Edição</strong>
+          <p class="grid-tile">Nome</p>
+          <p class="grid-tile">Código</p>
+          <p class="grid-tile">Endereço</p>
+          <p class="grid-tile">Edição</p>
           <p class="grid-item">Artur Fim Zortea</p>
           <p class="grid-item">23412343124</p>
           <p class="grid-item">Bento Gonçalves, RS</p>
-          <p class="grid-item">Edit</p>
+          <div class="grid-item">
+            <button ng-click="openModal()" class="editButton" type="button">
+              <i class="ph ph-pencil-simple" style="color: rgb(1, 174, 1)"></i>
+            </button>
+            <button
+              ng-click="openModal('delete')"
+              class="editButton"
+              type="button"
+            >
+              <i class="ph ph-trash" style="color: red"></i>
+            </button>
+          </div>
           <p class="grid-item">Artur Fim Zortea</p>
           <p class="grid-item">23412343124</p>
           <p class="grid-item">Bento Gonçalves, RS</p>
-          <p class="grid-item">Edit</p>
+          <div class="grid-item">
+            <button ng-click="openModal()" class="editButton" type="button">
+              <i class="ph ph-pencil-simple" style="color: rgb(1, 174, 1)"></i>
+            </button>
+            <button
+              ng-click="openModal('delete')"
+              class="editButton"
+              type="button"
+            >
+              <i class="ph ph-trash" style="color: red"></i>
+            </button>
+          </div>
           <p class="grid-item">Artur Fim Zortea</p>
           <p class="grid-item">23412343124</p>
           <p class="grid-item">Bento Gonçalves, RS</p>
-          <p class="grid-item">Edit</p>
+          <div class="grid-item">
+            <button
+              ng-click="openModal('edit')"
+              class="editButton"
+              type="button"
+            >
+              <i class="ph ph-pencil-simple" style="color: rgb(1, 174, 1)"></i>
+            </button>
+            <button
+              ng-click="openModal('delete')"
+              class="editButton"
+              type="button"
+            >
+              <i class="ph ph-trash" style="color: red"></i>
+            </button>
+          </div>
+        </div>
+        <button
+          ng-click="openModal('add')"
+          class="editButton"
+          style="margin: 10px; background-color: black"
+        >
+          <i class="ph ph-plus" style="color: white"></i>
+        </button>
+      </div>
+      <div ng-show="ask" , class="modal-overlay">
+        <div class="modal">
+          <div class="askClient">
+            <div class="createClientTitle">{{text}}</div>
+            <div class="rowButtonsForm">
+              <button
+                class="buttonFormCreate"
+                ng-click="openModal('delete')"
+                type="submit"
+              >
+                {{buttonText}}
+              </button>
+              <button class="buttonFormCancel" ng-click="openModal('delete')">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-show="show" class="modal-overlay">
+        <div class="modal">
+          <form class="createClient">
+            <div class="createClientTitle">{{text}}</div>
+            <div class="createClientimput">
+              <input
+                type="text"
+                id="campoDeTexto"
+                name="campoDeTexto"
+                placeholder="Nome"
+              />
+            </div>
+            <div class="createClientimput">
+              <input
+                type="text"
+                id="campoDeTexto"
+                name="campoDeTexto"
+                placeholder="Código"
+              />
+            </div>
+            <div class="createClientimput">
+              <input
+                type="text"
+                id="campoDeTexto"
+                name="campoDeTexto"
+                placeholder="Endereço"
+              />
+            </div>
+            <div class="rowButtonsForm">
+              <button
+                class="buttonFormCreate"
+                ng-click="openModal()"
+                type="submit"
+              >
+                {{buttonText}}
+              </button>
+              <button class="buttonFormCancel" ng-click="openModal()">
+                Cancelar
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <!-- Artur vai codar dqui pra baixo -->
     </main>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="./Angular/angular.js"></script>
+    <script src="./Angular/src.js"></script>
   </body>
 </html>
