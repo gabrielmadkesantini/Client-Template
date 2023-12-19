@@ -25,3 +25,8 @@ app.controller("modalController", ($scope) => {
     }
   };
 });
+
+app.controller("formController", ($scope) => {
+  $scope.name = "";
+  console.log($scope.name);
+});

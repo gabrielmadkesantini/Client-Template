@@ -104,7 +104,7 @@
       </div>
       <div ng-show="show" class="modal-overlay">
         <div class="modal">
-          <form class="createClient">
+          <form class="createClient" ng-controller="formController">
             <div class="createClientTitle">{{text}}</div>
             <div class="createClientimput">
               <input
@@ -112,6 +112,7 @@
                 id="campoDeTexto"
                 name="campoDeTexto"
                 placeholder="Nome"
+                ng-model="name"
               />
             </div>
             <div class="createClientimput">
