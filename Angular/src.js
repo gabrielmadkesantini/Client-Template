@@ -2,11 +2,14 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 app.config(($routeProvider) => {
   $routeProvider
-    .when("/clients", {
-      templateUrl: "/clients.html",
+      when("/", {
+        templateUrl : "views/home.html"
     })
     .when("/clients", {
-      templateUrl: "/companies",
+      templateUrl: "views/clients.html",
+    })
+    .when("/companies", {
+      templateUrl: "views/companies.html",
     });
 });
 
