@@ -1,4 +1,14 @@
-var app = angular.module("myApp", []);
+var app = angular.module("myApp", ["ngRoute"]);
+
+app.config(($routeProvider) => {
+  $routeProvider
+    .when("/clients", {
+      templateUrl: "/clients.html",
+    })
+    .when("/clients", {
+      templateUrl: "/companies",
+    });
+});
 
 app.controller("modalController", [
   "$scope",
@@ -38,10 +48,16 @@ app.controller("formController", [
   "$rootScope",
   ($scope, $rootScope) => {
     $scope.search = "";
-    $scope.customFilter = ()=>{}
+    $scope.customFilter = () => {};
     $scope.showButtons = false;
     $scope.master = {};
-    $scope.savedClients = [{name: 'Artur Fim Zortea', code: "2334424", address: "Bento Gonçalves, RS"}];
+    $scope.savedClients = [
+      {
+        name: "Artur Fim Zortea",
+        code: "2334424",
+        address: "Bento Gonçalves, RS",
+      },
+    ];
     if ($scope.savedClients.length != 0) {
       $scope.showButtons = !$scope.showButtons;
     }
@@ -82,7 +98,7 @@ app.controller("formController", [
 
     $scope.update = () => {
       reset();
-    }
+    };
 
     $scope.openUpdate = () => {
       if ($rootScope.name != "") {
@@ -91,9 +107,5 @@ app.controller("formController", [
         );
       }
     };
-
-   
-
-
   },
 ]);
