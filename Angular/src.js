@@ -1,23 +1,15 @@
 var app = angular.module("myApp", []);
 
-// app.directive("firstDirective", () => {
-//   return {
-//     require: "ngModel",
-//     link: () =>{
-
-//     }
-//   };
-// });
-
 app.controller("modalController", [
   "$scope",
   "$rootScope",
   ($scope, $rootScope) => {
     $scope.show = false;
     $scope.text = "";
+    $scope.showUpdate = false;
     $scope.ask = false;
     $scope.buttonText = "";
-
+    console.log($scope.show);
     $scope.openModal = (text, name) => {
       $rootScope.name = name;
       console.log(name);
@@ -34,7 +26,7 @@ app.controller("modalController", [
           break;
         default:
           $scope.text = "Editar Cliente";
-          $scope.show = !$scope.show;
+          $scope.showUpdate = !$scope.showUpdate;
           $scope.buttonText = "Salvar";
       }
     };
@@ -45,9 +37,11 @@ app.controller("formController", [
   "$scope",
   "$rootScope",
   ($scope, $rootScope) => {
+    $scope.search = "";
+    $scope.customFilter = ()=>{}
     $scope.showButtons = false;
     $scope.master = {};
-    $scope.savedClients = [];
+    $scope.savedClients = [{name: 'Artur Fim Zortea', code: "2334424", address: "Bento Gonçalves, RS"}];
     if ($scope.savedClients.length != 0) {
       $scope.showButtons = !$scope.showButtons;
     }
@@ -55,48 +49,51 @@ app.controller("formController", [
       $scope.user = {};
       $scope.updateValues = {};
     };
-    $scope.save = (user, updateValues) => {
-      console.log(updateValues);
+    $scope.save = (user) => {
+      // console.log(master);
+      // console.log($rootScope.name);
 
-      $scope.master = angular.copy(user);
-      if (updateValues) {
-        if (
-          user.name != updateValues.name ||
-          user.code != updateValues.code ||
-          user.address != updateValues.address
-        ) {
-          const specificIndex = $scope.savedClients.findIndex(
-            (e) => e.code === updateValues.code
-          );
-          console.log(user);
-          $scope.savedClients[specificIndex] = $scope.user;
-        } else {
-          if (updateValues == 0) {
-            $scope.savedClients.push($scope.user);
-          }
-        }
-      } else {
-        $scope.savedClients.push($scope.user);
+      if ($rootScope.name != "") {
+        currentUser = $scope.savedClients.find(
+          (e) => e.name == $rootScope.name
+        );
+      }
+      console.log(currentUser);
+      console.log(user);
+
+      if (Object.keys(user).length > 2) {
+        $scope.master = angular.copy(user);
+        $scope.savedClients.push(user);
       }
 
       $scope.reset();
     };
-    $scope.openUpdate = () => {
-      console.log($rootScope.name);
 
+    $scope.delete = () => {
+      console.log($rootScope.name);
+      const specificIndex = $scope.savedClients.findIndex(
+        (e) => e.name == $rootScope.name
+      );
+      $scope.savedClients.splice(specificIndex, 1);
+      $scope.reset();
+
+      console.log(specificIndex);
+    };
+
+    $scope.update = () => {
+      reset();
+    }
+
+    $scope.openUpdate = () => {
       if ($rootScope.name != "") {
         $scope.user = $scope.savedClients.find(
           (e) => e.name == $rootScope.name
         );
-
-        $scope.updateValues = $scope.savedClients.find(
-          (e) => e.name == $rootScope.name
-        );
-
-        console.log($scope.user);
       }
     };
 
-    $scope.update = (name) => {};
+   
+
+
   },
 ]);

@@ -12,6 +12,7 @@ body {
 
 main {
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   display: flex;
   height: 100vh;
@@ -180,14 +181,6 @@ button {
   transition: all 0.3s ease;
 }
 
-.input-com-label input:focus + label,
-.input-com-label input:valid + label,
-.input-com-label input:not(:placeholder-shown) + label {
-  font-size: 12px;
-  top: 5px;
-  left: 10px;
-  color: #3498db;
-}
 
 .rowButtonsForm {
   width: 100%;
@@ -210,8 +203,17 @@ button {
   background-color: #2d2d2d;
 }
 
+.addButton {
+  margin: 10px;
+  background-color: black;
+  border: none;
+  border-radius: 50px;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+}
+
 .buttonFormCancel {
-  padding: 10px 20px;
   font-size: 16px;
   text-align: center;
   cursor: pointer;
@@ -223,4 +225,25 @@ button {
 
 .buttonFormCancel:hover {
   background-color: #a4a4a4;
+}
+
+.search-container {
+  position: relative;
+  margin: 10px;
+  width: 300px;
+}
+
+.search-container input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: #888;
 }
