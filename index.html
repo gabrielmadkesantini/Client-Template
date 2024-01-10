@@ -15,19 +15,19 @@
     <header class="styledHeader">
       <div class="titleHeader">Angular.Js test</div>
       <div class="linksContainer">
-        <a href="#/!">Home</a>
-        <a href="#!clients">Lista de Clientes</a>
-        <a href="#!companies">Companias</a>
+        <a class="individualLink" href="#!clients">Lista de Clientes</a>
+        <a class="individualLink" href="#!companies">Companias</a>
       </div>
       <div class="functionsHeader">
         <p><i style="font-size: 26px" class="ph ph-users"></i></p>
         <p><i style="font-size: 26px" class="ph ph-list"></i></p>
       </div>
     </header>
-    <main ng-view ng-controller="formController"></main>
+    <main ng-view>
+    </main>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <script src="./Angular/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="./Angular/angular.js"></script>
     <script src="./Angular/src.js"></script>
   </body>
 </html>

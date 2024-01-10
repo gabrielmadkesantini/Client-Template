@@ -251,7 +251,20 @@ button {
 /* artur changes */
 .linksContainer{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 20%;
+}
+
+.individualLink{
+  color: black;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.individualLink:hover{
+  color: #ff0000;
+  text-decoration: none;
+  font-size: 20px;
+  transition: 0.5s;
 }
