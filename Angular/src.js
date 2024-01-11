@@ -2,8 +2,8 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 app.config(($routeProvider) => {
   $routeProvider
-    .when("/", {
-      templateUrl: "views/home.html",
+      when("/", {
+        templateUrl : "views/home.html"
     })
     .when("/clients", {
       templateUrl: "views/clients.html",
@@ -11,7 +11,7 @@ app.config(($routeProvider) => {
     .when("/companies", {
       templateUrl: "views/companies.html",
     });
-});
+ });
 
 app.controller("modalController", [
   "$scope",
@@ -28,17 +28,17 @@ app.controller("modalController", [
       console.log(name);
       switch (text) {
         case "delete":
-          $scope.text = "Deseja mesmo deletar";
+          $scope.text = "Deseja mesmo deletar este cliente?";
           $scope.buttonText = "Sim";
           $scope.ask = !$scope.ask;
           break;
         case "add":
-          $scope.text = "Criar ";
+          $scope.text = "Criar cliente";
           $scope.show = !$scope.show;
-          $scope.buttonText = "Criar ";
+          $scope.buttonText = "Criar Cliente";
           break;
         default:
-          $scope.text = "Editar ";
+          $scope.text = "Editar Cliente";
           $scope.showUpdate = !$scope.showUpdate;
           $scope.buttonText = "Salvar";
       }
@@ -54,14 +54,6 @@ app.controller("formController", [
     $scope.customFilter = () => {};
     $scope.showButtons = false;
     $scope.master = {};
-    $scope.savedCompanies = [
-      {
-        name: "Tramontina",
-        code: "123456",
-        contacts: ["99145453", "99145453", "99145453", "99145453", "99145453"],
-        address: "Carlos Barbosa",
-      },
-    ];
     $scope.savedClients = [
       {
         name: "Artur Fim Zortea",
@@ -76,12 +68,9 @@ app.controller("formController", [
       $scope.user = {};
       $scope.updateValues = {};
     };
-    $scope.save = (user, comp) => {
+    $scope.save = (user) => {
       // console.log(master);
       // console.log($rootScope.name);
-
-      if (comp) {
-      }
 
       if ($rootScope.name != "") {
         currentUser = $scope.savedClients.find(
