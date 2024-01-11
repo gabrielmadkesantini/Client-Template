@@ -205,7 +205,7 @@ button {
   transition: all 0.3s ease;
 }
 
-.buttonNumber{
+.buttonNumber {
   width: 35px;
   display: flex;
   justify-content: center;
@@ -222,29 +222,29 @@ button {
   overflow: hidden;
 }
 
-.createClientlayoutNumero{
+.createClientlayoutNumero {
   display: flex;
   justify-content: space-between;
 }
 
-.localNumberList{
+.localNumberList {
   display: flex;
-  padding: 5px;
-align-items: center;
-justify-content: space-between;
+  padding: 10px;
+  width: 50%;
+  align-items: center;
+  justify-content: space-between;
   margin-right: 10px;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   border: 1px solid #00000062;
-  border-radius: 5px
+  border-radius: 5px;
 }
 
-.iconPhone{
+.iconPhone {
   display: flex;
 }
 
-
-.numbersList{
-  width:80%;
+.numbersList {
+  width: 80%;
   display: flex;
   flex-direction: row;
   padding: 5px;

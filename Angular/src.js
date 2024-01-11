@@ -2,8 +2,8 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 app.config(($routeProvider) => {
   $routeProvider
-      .when("/", {
-        templateUrl : "views/home.html"
+    .when("/", {
+      templateUrl: "views/home.html",
     })
     .when("/clients", {
       templateUrl: "views/clients.html",
@@ -11,7 +11,7 @@ app.config(($routeProvider) => {
     .when("/companies", {
       templateUrl: "views/companies.html",
     });
- });
+});
 
 app.controller("modalController", [
   "$scope",
@@ -46,25 +46,6 @@ app.controller("modalController", [
   },
 ]);
 
-app.controller("contactController", [
-  "$scope",
-  "$rootScope",
-  ($scope, $rootScope) => {
-    $rootScope.contacts = [];
-
-    $scope.saveContact = (contact) => {
-      if (contact) {
-        $rootScope.contacts.push(contact);
-      }
-    };
-
-    $scope.delete = (number) => {
-      const specificIndex = contacts.findIndex((e) => e == number);
-      $rootScope.contacts.splice(specificIndex, 1);
-    };
-  },
-]);
-
 app.controller("formController", [
   "$scope",
   "$rootScope",
@@ -73,6 +54,20 @@ app.controller("formController", [
     $scope.customFilter = () => {};
     $scope.showButtons = false;
     $scope.master = {};
+    $rootScope.contacts = [];
+    $scope.saveContact = (contact) => {
+      console.log(contact);
+
+      if (contact) {
+        $rootScope.contacts.push(contact);
+        console.log($rootScope.contacts);
+      }
+    };
+
+    $scope.deleteContact = (number) => {
+      const specificIndex = $rootScope.contacts.findIndex((e) => e == number);
+      $rootScope.contacts.splice(specificIndex, 1);
+    };
     $scope.savedCompanies = [
       {
         name: "Tramontina",
@@ -97,9 +92,6 @@ app.controller("formController", [
       $scope.updateValues = {};
     };
     $scope.save = (user) => {
-      // console.log(master);
-      // console.log($rootScope.name);
-
       if ($rootScope.name != "") {
         currentUser = $scope.savedClients.find(
           (e) => e.name == $rootScope.name
@@ -110,6 +102,9 @@ app.controller("formController", [
 
       if (Object.keys(user).length > 2) {
         if (comp) {
+          if ($scope.savedComapanies.length > 0) {
+            $scope.user.contacts = $rootScope.contacts;
+          }
           $scope.master = angular.copy(user);
           $scope.savedCompanies.push(user);
         } else {
