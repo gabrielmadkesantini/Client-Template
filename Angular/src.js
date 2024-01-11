@@ -46,6 +46,12 @@ app.controller("modalController", [
   },
 ]);
 
+app.controller("contactController", [
+  "$scope",
+  "$rootScope",
+  ($scope, $rootScope) => {},
+]);
+
 app.controller("formController", [
   "$scope",
   "$rootScope",
@@ -77,11 +83,8 @@ app.controller("formController", [
       $scope.updateValues = {};
     };
     $scope.save = (user, comp) => {
-      // console.log(master);
+      console.log(comp);
       // console.log($rootScope.name);
-
-      if (comp) {
-      }
 
       if ($rootScope.name != "") {
         currentUser = $scope.savedClients.find(
@@ -92,8 +95,13 @@ app.controller("formController", [
       console.log(user);
 
       if (Object.keys(user).length > 2) {
-        $scope.master = angular.copy(user);
-        $scope.savedClients.push(user);
+        if (comp) {
+          $scope.master = angular.copy(user);
+          $scope.savedCompanies.push(user);
+        } else {
+          $scope.master = angular.copy(user);
+          $scope.savedClients.push(user);
+        }
       }
 
       $scope.reset();
