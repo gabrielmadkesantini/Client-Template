@@ -76,7 +76,7 @@
 </div>
 <div ng-show="show" class="modal-overlay">
   <div class="modal">
-    <form class="createClient" ng-submit="save(user, comp)">
+    <form class="createClient" ng-submit="save(user, 'comp')">
       <div class="createClientTitle">{{text}} compania</div>
       <div class="createClientimput">
         <input
@@ -108,7 +108,9 @@
           ng-model="user.address"
         />
       </div>
-      <div class="createClientimput">
+
+      <div class="createClientlayoutNumero">
+      <div class="createClientimputNumero">
       <input
       type="text"
       id="campoDeTexto"
@@ -117,11 +119,16 @@
       placeholder="Números"
       ng-model="user.contacts"
       />
-      <button>
-        
-      </button>
     </div>
-
+    <button
+      type="submit"
+      ng-click=""
+      class="buttonNumber">  <i class="ph ph-plus" style="color: white"></i>
+    </button>
+    </div>
+    <div class="localNumberList">
+    <p class="numbersList"> 54981337273</p>
+    </div>
       <div class="rowButtonsForm">
         <button
           class="buttonFormCreate"

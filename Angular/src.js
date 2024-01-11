@@ -2,7 +2,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 app.config(($routeProvider) => {
   $routeProvider
-      when("/", {
+      .when("/", {
         templateUrl : "views/home.html"
     })
     .when("/clients", {
@@ -28,17 +28,17 @@ app.controller("modalController", [
       console.log(name);
       switch (text) {
         case "delete":
-          $scope.text = "Deseja mesmo deletar este cliente?";
+          $scope.text = "Deseja mesmo deletar ";
           $scope.buttonText = "Sim";
           $scope.ask = !$scope.ask;
           break;
         case "add":
-          $scope.text = "Criar cliente";
+          $scope.text = "Criar ";
           $scope.show = !$scope.show;
-          $scope.buttonText = "Criar Cliente";
+          $scope.buttonText = "Criar ";
           break;
         default:
-          $scope.text = "Editar Cliente";
+          $scope.text = "Editar ";
           $scope.showUpdate = !$scope.showUpdate;
           $scope.buttonText = "Salvar";
       }
