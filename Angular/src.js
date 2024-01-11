@@ -73,6 +73,14 @@ app.controller("formController", [
     $scope.customFilter = () => {};
     $scope.showButtons = false;
     $scope.master = {};
+    $scope.savedCompanies = [
+      {
+        name: "Tramontina",
+        code: "123456",
+        contacts: ["99145453", "99145453", "99145453", "99145453", "99145453"],
+        address: "Carlos Barbosa",
+      },
+    ];
     $scope.savedClients = [
       {
         name: "Artur Fim Zortea",
@@ -101,8 +109,13 @@ app.controller("formController", [
       console.log(user);
 
       if (Object.keys(user).length > 2) {
-        $scope.master = angular.copy(user);
-        $scope.savedClients.push(user);
+        if (comp) {
+          $scope.master = angular.copy(user);
+          $scope.savedCompanies.push(user);
+        } else {
+          $scope.master = angular.copy(user);
+          $scope.savedClients.push(user);
+        }
       }
 
       $scope.reset();
