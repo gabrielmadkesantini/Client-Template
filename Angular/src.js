@@ -49,7 +49,20 @@ app.controller("modalController", [
 app.controller("contactController", [
   "$scope",
   "$rootScope",
-  ($scope, $rootScope) => {},
+  ($scope, $rootScope) => {
+    $rootScope.contacts = [];
+
+    $scope.saveContact = (contact) => {
+      if (contact) {
+        $rootScope.contacts.push(contact);
+      }
+    };
+
+    $scope.delete = (number) => {
+      const specificIndex = contacts.findIndex((e) => e == number);
+      $rootScope.contacts.splice(specificIndex, 1);
+    };
+  },
 ]);
 
 app.controller("formController", [
@@ -75,6 +88,7 @@ app.controller("formController", [
         address: "Bento Gonçalves, RS",
       },
     ];
+
     if ($scope.savedClients.length != 0) {
       $scope.showButtons = !$scope.showButtons;
     }
