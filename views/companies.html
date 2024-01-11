@@ -1,10 +1,5 @@
 <div class="search-container">
-  <input
-    type="text"
-    placeholder="Pesquisar..."
-    ng-model="search"
-    ng-change="onChange()"
-  />
+  <input type="text" placeholder="Pesquisar..." ng-model="search" ng-change="onChange()" />
   <i class="ph ph-magnifying-glass search-icon"></i>
 </div>
 
@@ -16,11 +11,7 @@
     <p class="grid-tile">Números</p>
     <p class="grid-tile">Edição</p>
   </div>
-  <div
-    ng-repeat="a in savedCompanies | filter:search"
-    class="gridTitles"
-    ng-if="savedCompanies.length > 0"
-  >
+  <div ng-repeat="a in savedCompanies | filter:search" class="gridTitles" ng-if="savedCompanies.length > 0">
     <p class="grid-item">{{a.name}}</p>
     <p class="grid-item">{{a.code}}</p>
     <p class="grid-item">{{a.address}}</p>
@@ -32,18 +23,10 @@
       </select>
     </div>
     <div class="grid-item">
-      <button
-        ng-click="openModal('', x.name); openUpdate()"
-        class="editButton"
-        type="button"
-      >
+      <button ng-click="openModal('', x.name); openUpdate()" class="editButton" type="button">
         <i class="ph ph-pencil-simple" style="color: rgb(1, 174, 1)"></i>
       </button>
-      <button
-        ng-click="openModal('delete', x.name);"
-        class="editButton"
-        type="button"
-      >
+      <button ng-click="openModal('delete', x.name);" class="editButton" type="button">
         <i class="ph ph-trash" style="color: red"></i>
       </button>
     </div>
@@ -57,17 +40,10 @@
     <div class="askClient">
       <div class="createClientTitle">{{text}} esta compania</div>
       <div class="rowButtonsForm">
-        <button
-          class="buttonFormCreate"
-          ng-click="openModal('delete', name); delete()"
-          type="submit"
-        >
+        <button class="buttonFormCreate" ng-click="openModal('delete', name); delete()" type="submit">
           {{buttonText}}
         </button>
-        <button
-          class="buttonFormCancel"
-          ng-click="openModal('delete'); reset()"
-        >
+        <button class="buttonFormCancel" ng-click="openModal('delete'); reset()">
           Cancelar
         </button>
       </div>
@@ -79,69 +55,40 @@
     <form class="createClient" ng-submit="save(user, 'comp')">
       <div class="createClientTitle">{{text}} compania</div>
       <div class="createClientimput">
-        <input
-          ng-model-options="{ updateOn: 'submit' }"
-          type="text"
-          id="campoDeTexto"
-          name="campoDeTexto"
-          placeholder="Nome"
-          ng-model="user.name"
-        />
+        <input ng-model-options="{ updateOn: 'submit' }" type="text" id="campoDeTexto" name="campoDeTexto"
+          placeholder="Nome" ng-model="user.name" />
       </div>
       <div class="createClientimput">
-        <input
-          type="text"
-          ng-model-options="{ updateOn: 'submit' }"
-          id="campoDeTexto"
-          name="campoDeTexto"
-          placeholder="Código"
-          ng-model="user.code"
-        />
+        <input type="text" ng-model-options="{ updateOn: 'submit' }" id="campoDeTexto" name="campoDeTexto"
+          placeholder="Código" ng-model="user.code" />
       </div>
       <div class="createClientimput">
-        <input
-          type="text"
-          id="campoDeTexto"
-          ng-model-options="{ updateOn: 'submit' }"
-          name="campoDeTexto"
-          placeholder="Endereço"
-          ng-model="user.address"
-        />
+        <input type="text" id="campoDeTexto" ng-model-options="{ updateOn: 'submit' }" name="campoDeTexto"
+          placeholder="Endereço" ng-model="user.address" />
       </div>
 
       <div class="createClientlayoutNumero">
-      <div class="createClientimputNumero">
-      <input
-      type="text"
-      id="campoDeTexto"
-      ng-model-options="{ updateOn: 'submit' }"
-      name="campoDeTexto"
-      placeholder="Números"
-      ng-model="user.contacts"
-      />
-    </div>
-    <button
-      type="submit"
-      ng-click=""
-      class="buttonNumber">  <i class="ph ph-plus" style="color: white"></i>
-    </button>
-    </div>
-    <div class="localNumberList">
-    <p class="numbersList"> 54981337273</p>
-    </div>
+        <div class="createClientimputNumero">
+          <input type="text" id="campoDeTexto" ng-model-options="{ updateOn: 'submit' }" name="campoDeTexto"
+            placeholder="Números" ng-model="user.contacts" />
+        </div>
+        <button type="submit" ng-click="" class="buttonNumber"> <i class="ph ph-plus" style="color: white"></i>
+        </button>
+      </div>
+      <div class="localNumberList">
+        <div class="iconPhone">
+          <i class="ph ph-phone" style="margin-right:10px;"></i>
+          <p>234324234</p>
+        </div>
+
+        <button style="border: none;
+      background: none; margin: 0px; padding: 0px;" ng-click="delete(number)"><i class="ph ph-x"></i> </button>
+      </div>
       <div class="rowButtonsForm">
-        <button
-          class="buttonFormCreate"
-          ng-click="openModal('add');"
-          type="submit"
-        >
+        <button class="buttonFormCreate" ng-click="openModal('add');" type="submit">
           {{buttonText}} compania
         </button>
-        <button
-          class="buttonFormCancel"
-          ng-click="openModal('add'); reset()"
-          type="submit"
-        >
+        <button class="buttonFormCancel" ng-click="openModal('add'); reset()" type="submit">
           Cancelar
         </button>
       </div>
@@ -153,47 +100,22 @@
     <form class="createClient" ng-submit="update()">
       <div class="createClientTitle">{{text}} compania</div>
       <div class="createClientimput">
-        <input
-          ng-model-options="{ updateOn: 'submit' }"
-          type="text"
-          id="campoDeTexto"
-          name="campoDeTexto"
-          placeholder="Nome"
-          ng-model="user.name"
-          ng-value="user.name"
-        />
+        <input ng-model-options="{ updateOn: 'submit' }" type="text" id="campoDeTexto" name="campoDeTexto"
+          placeholder="Nome" ng-model="user.name" ng-value="user.name" />
       </div>
       <div class="createClientimput">
-        <input
-          type="text"
-          ng-model-options="{ updateOn: 'submit' }"
-          id="campoDeTexto"
-          name="campoDeTexto"
-          placeholder="Código"
-          ng-model="user.code"
-          ng-value="user.code"
-        />
+        <input type="text" ng-model-options="{ updateOn: 'submit' }" id="campoDeTexto" name="campoDeTexto"
+          placeholder="Código" ng-model="user.code" ng-value="user.code" />
       </div>
       <div class="createClientimput">
-        <input
-          type="text"
-          id="campoDeTexto"
-          ng-model-options="{ updateOn: 'submit' }"
-          name="campoDeTexto"
-          placeholder="Endereço"
-          ng-model="user.address"
-          ng-value="user.address"
-        />
+        <input type="text" id="campoDeTexto" ng-model-options="{ updateOn: 'submit' }" name="campoDeTexto"
+          placeholder="Endereço" ng-model="user.address" ng-value="user.address" />
       </div>
       <div class="rowButtonsForm">
         <button class="buttonFormCreate" ng-click="openModal();" type="submit">
           {{buttonText}}
         </button>
-        <button
-          class="buttonFormCancel"
-          ng-click="openModal(); reset()"
-          type="submit"
-        >
+        <button class="buttonFormCancel" ng-click="openModal(); reset()" type="submit">
           Cancelar
         </button>
       </div>
