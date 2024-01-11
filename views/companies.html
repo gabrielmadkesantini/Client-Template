@@ -13,16 +13,24 @@
     <p class="grid-tile">Compania</p>
     <p class="grid-tile">Código</p>
     <p class="grid-tile">Endereço</p>
+    <p class="grid-tile">Números</p>
     <p class="grid-tile">Edição</p>
   </div>
   <div
-    ng-repeat="x in savedClients | filter:search"
+    ng-repeat="a in savedCompanies | filter:search"
     class="gridTitles"
-    ng-if="savedClients.length > 0"
+    ng-if="savedCompanies.length > 0"
   >
-    <p class="grid-item">{{x.name}}</p>
-    <p class="grid-item">{{x.code}}</p>
-    <p class="grid-item">{{x.address}}</p>
+    <p class="grid-item">{{a.name}}</p>
+    <p class="grid-item">{{a.code}}</p>
+    <p class="grid-item">{{a.address}}</p>
+    <div class="grid-item" id="styledSelect">
+      <select name="" class="selectNumber">
+        <option ng-repeat="x in a.contacts track by $index" value="{{x}}">
+          {{x}}
+        </option>
+      </select>
+    </div>
     <div class="grid-item">
       <button
         ng-click="openModal('', x.name); openUpdate()"
@@ -68,7 +76,7 @@
 </div>
 <div ng-show="show" class="modal-overlay">
   <div class="modal">
-    <form class="createClient" ng-submit="save(user)">
+    <form class="createClient" ng-submit="save(user, comp)">
       <div class="createClientTitle">{{text}} compania</div>
       <div class="createClientimput">
         <input

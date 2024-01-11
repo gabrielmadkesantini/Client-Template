@@ -54,6 +54,14 @@ app.controller("formController", [
     $scope.customFilter = () => {};
     $scope.showButtons = false;
     $scope.master = {};
+    $scope.savedCompanies = [
+      {
+        name: "Tramontina",
+        code: "123456",
+        contacts: ["99145453", "99145453", "99145453", "99145453", "99145453"],
+        address: "Carlos Barbosa",
+      },
+    ];
     $scope.savedClients = [
       {
         name: "Artur Fim Zortea",
@@ -68,9 +76,12 @@ app.controller("formController", [
       $scope.user = {};
       $scope.updateValues = {};
     };
-    $scope.save = (user) => {
+    $scope.save = (user, comp) => {
       // console.log(master);
       // console.log($rootScope.name);
+
+      if (comp) {
+      }
 
       if ($rootScope.name != "") {
         currentUser = $scope.savedClients.find(

@@ -47,7 +47,7 @@ main {
 
 .gridTitles {
   height: 100%;
-  grid-template-columns: 200px 200px 250px 100px;
+  grid-template-columns: 200px 200px 250px 150px 100px;
   display: grid;
 }
 
@@ -181,7 +181,6 @@ button {
   transition: all 0.3s ease;
 }
 
-
 .rowButtonsForm {
   width: 100%;
   display: flex;
@@ -249,22 +248,38 @@ button {
 }
 
 /* artur changes */
-.linksContainer{
+.linksContainer {
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 20%;
 }
 
-.individualLink{
+.individualLink {
   color: black;
   font-size: 17px;
   text-decoration: none;
 }
 
-.individualLink:hover{
+.individualLink:hover {
   color: #ff0000;
   text-decoration: none;
   font-size: 20px;
   transition: 0.5s;
+}
+
+.selectNumber {
+  font-size: 16px;
+  padding: 5px;
+  width: 110px;
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Adiciona bordas redondas */
+}
+#styledSelect {
+  display: flex;
+  align-items: center;
+}
+
+#styledSelect select:focus {
+  outline: none;
 }
