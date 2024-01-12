@@ -54,19 +54,31 @@ app.controller("formController", [
     $scope.customFilter = () => {};
     $scope.showButtons = false;
     $scope.master = {};
-    $rootScope.contacts = [];
-    $scope.saveContact = (contact) => {
-      console.log(contact);
-
+    $scope.saveContact = (contact, isUpdate) => {
+      console.log($scope.user.contacts);
       if (contact) {
-        $rootScope.contacts.push(contact);
-        console.log($rootScope.contacts);
+        $scope.contacts.push(contact);
       }
+
+      console.log(
+        "newcontact" + $scope.contacts,
+        "contatos atuais" + $scope.user.contacts
+      );
     };
 
-    $scope.deleteContact = (number) => {
-      const specificIndex = $rootScope.contacts.findIndex((e) => e == number);
-      $rootScope.contacts.splice(specificIndex, 1);
+    $scope.confirmChanges = () => {
+      $scope.user.contacts = $scope.contacts;
+      console.log($scope.user.contacts);
+    };
+
+    $scope.deleteContact = (number, isFromUpdate) => {
+      if (isFromUpdate) {
+        const specificIndex = $scope.contacts.findIndex((e) => e == number);
+        $scope.contacts.splice(specificIndex, 1);
+      } else {
+        const specificIndex = $scope.contacts.findIndex((e) => e == number);
+        $scope.contacts.splice(specificIndex, 1);
+      }
     };
     $scope.savedCompanies = [
       {
@@ -88,22 +100,27 @@ app.controller("formController", [
       $scope.showButtons = !$scope.showButtons;
     }
     $scope.reset = () => {
+      console.log("reset");
+      $scope.contacts = [];
       $scope.user = {};
       $scope.updateValues = {};
     };
-    $scope.save = (user) => {
+    $scope.save = (user, comp, reset) => {
+      if (reset) {
+        user = {};
+      }
+
       if ($rootScope.name != "") {
         currentUser = $scope.savedClients.find(
           (e) => e.name == $rootScope.name
         );
       }
-      console.log(currentUser);
-      console.log(user);
 
       if (Object.keys(user).length > 2) {
         if (comp) {
-          if ($scope.savedComapanies.length > 0) {
-            $scope.user.contacts = $rootScope.contacts;
+          console.log($scope.contacts);
+          if ($scope.savedCompanies.length > 0) {
+            $scope.user.contacts = $scope.contacts;
           }
           $scope.master = angular.copy(user);
           $scope.savedCompanies.push(user);
@@ -116,23 +133,36 @@ app.controller("formController", [
       $scope.reset();
     };
 
-    $scope.delete = () => {
+    $scope.delete = (isComp) => {
       console.log($rootScope.name);
-      const specificIndex = $scope.savedClients.findIndex(
-        (e) => e.name == $rootScope.name
-      );
-      $scope.savedClients.splice(specificIndex, 1);
-      $scope.reset();
+
+      if (isComp) {
+        const specificIndex = $scope.savedCompanies.findIndex(
+          (e) => e.name == $rootScope.name
+        );
+        $scope.savedCompanies.splice(specificIndex, 1);
+        $scope.reset();
+      } else {
+        const specificIndex = $scope.savedClients.findIndex(
+          (e) => e.name == $rootScope.name
+        );
+        $scope.savedClients.splice(specificIndex, 1);
+        $scope.reset();
+      }
 
       console.log(specificIndex);
     };
 
-    $scope.update = () => {
-      reset();
-    };
+    $scope.update = () => {};
 
-    $scope.openUpdate = () => {
-      if ($rootScope.name != "") {
+    $scope.openUpdate = (isComp) => {
+      if (isComp) {
+        $scope.user = $scope.savedCompanies.find(
+          (e) => e.name == $rootScope.name
+        );
+
+        $scope.contacts = angular.copy($scope.user.contacts);
+      } else if ($rootScope.name) {
         $scope.user = $scope.savedClients.find(
           (e) => e.name == $rootScope.name
         );

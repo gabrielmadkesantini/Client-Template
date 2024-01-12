@@ -183,12 +183,6 @@ button {
   transition: all 0.3s ease;
 }
 
-.createClientimputNumero {
-  position: relative;
-  margin-bottom: 15px;
-  width: 90%;
-}
-
 .createClientimputNumero input {
   width: 90%;
   padding: 10px;
@@ -206,16 +200,14 @@ button {
 }
 
 .buttonNumber {
-  width: 35px;
+  cursor: pointer;
   display: flex;
+  border-radius: 0 5px 5px 0;
+  width: 20%;
   justify-content: center;
   align-items: center;
-  height: 35px;
   background-color: black;
   color: white;
-  border-radius: 50%;
-  padding: 10px;
-  margin-right: 25px;
   cursor: pointer;
   font-size: 16px;
   position: relative;
@@ -223,8 +215,9 @@ button {
 }
 
 .createClientlayoutNumero {
+  margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
+  width: 100%;
 }
 
 .localNumberList {
@@ -235,6 +228,7 @@ button {
   justify-content: space-between;
   margin-right: 10px;
   margin-bottom: 5px;
+  margin-top: 5px;
   border: 1px solid #00000062;
   border-radius: 5px;
 }
@@ -291,7 +285,10 @@ button {
   font-size: 16px;
   text-align: center;
   cursor: pointer;
+  display: flex;
+  align-items: center;
   border-radius: 5px;
+  padding: 10px;
   color: #000000;
   border: #ccc;
   background-color: #bdbdbd;

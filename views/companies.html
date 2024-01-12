@@ -33,14 +33,14 @@
     </div>
     <div class="grid-item">
       <button
-        ng-click="openModal('', x.name); openUpdate()"
+        ng-click="openModal('', a.name); openUpdate(true)"
         class="editButton"
         type="button"
       >
         <i class="ph ph-pencil-simple" style="color: rgb(1, 174, 1)"></i>
       </button>
       <button
-        ng-click="openModal('delete', x.name);"
+        ng-click="openModal('delete', a.name);"
         class="editButton"
         type="button"
       >
@@ -59,7 +59,7 @@
       <div class="rowButtonsForm">
         <button
           class="buttonFormCreate"
-          ng-click="openModal('delete', name); delete()"
+          ng-click="openModal('delete', name); delete(true)"
           type="submit"
         >
           {{buttonText}}
@@ -67,6 +67,7 @@
         <button
           class="buttonFormCancel"
           ng-click="openModal('delete'); reset()"
+          type="button"
         >
           Cancelar
         </button>
@@ -119,9 +120,9 @@
             ng-model="contact"
           />
         </div>
-        <button ng-click="saveContact(contact)" class="buttonNumber">
+        <div ng-click="saveContact(contact)" class="buttonNumber">
           <i class="ph ph-plus" style="color: white"></i>
-        </button>
+        </div>
       </div>
       <div class="localNumberList" ng-repeat="x in contacts track by $index">
         <div class="iconPhone">
@@ -129,28 +130,34 @@
           <p>{{x}}</p>
         </div>
 
-        <button
-          style="border: none; background: none; margin: 0px; padding: 0px"
-          ng-click="deleteContact(x)"
+        <div
+          style="
+            border: none;
+            background: none;
+            margin: 0px;
+            padding: 0px;
+            cursor: pointer;
+          "
+          ng-click="deleteContact(x, true)"
         >
           <i class="ph ph-x"></i>
-        </button>
+        </div>
       </div>
       <div class="rowButtonsForm">
         <button
           class="buttonFormCreate"
-          ng-click="openModal('add');"
+          ng-click="openModal('add'); confirmChanges()"
           type="submit"
         >
           {{buttonText}} compania
         </button>
-        <button
+        <div
           class="buttonFormCancel"
-          ng-click="openModal('add'); reset()"
+          ng-click="openModal('add'); save('', '', true)"
           type="submit"
         >
           Cancelar
-        </button>
+        </div>
       </div>
     </form>
   </div>
@@ -192,13 +199,50 @@
           ng-value="user.address"
         />
       </div>
+      <div class="createClientlayoutNumero">
+        <div class="createClientimputNumero">
+          <input
+            type="text"
+            id="campoDeTexto"
+            name="campoDeTexto"
+            placeholder="Números"
+            ng-model="contact"
+          />
+        </div>
+        <div ng-click="saveContact(contact, true)" class="buttonNumber">
+          <i class="ph ph-plus" style="color: white"></i>
+        </div>
+      </div>
+      <div class="localNumberList" ng-repeat="x in contacts track by $index">
+        <div class="iconPhone">
+          <i class="ph ph-phone" style="margin-right: 5px"></i>
+          <p>{{x}}</p>
+        </div>
+
+        <div
+          style="
+            border: none;
+            background: none;
+            margin: 0px;
+            padding: 0px;
+            cursor: pointer;
+          "
+          ng-click="deleteContact(x, true)"
+        >
+          <i class="ph ph-x"></i>
+        </div>
+      </div>
       <div class="rowButtonsForm">
-        <button class="buttonFormCreate" ng-click="openModal();" type="submit">
+        <button
+          class="buttonFormCreate"
+          ng-click="openModal(); confirmChanges()"
+          type="submit"
+        >
           {{buttonText}}
         </button>
         <button
           class="buttonFormCancel"
-          ng-click="openModal(); reset()"
+          ng-click="openModal(); save('', '', true);"
           type="submit"
         >
           Cancelar
