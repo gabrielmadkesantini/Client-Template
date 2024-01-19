@@ -25,7 +25,6 @@ app.controller("modalController", [
     console.log($scope.show);
     $scope.openModal = (text, name) => {
       $rootScope.name = name;
-      console.log(name);
       switch (text) {
         case "delete":
           $scope.text = "Deseja mesmo deletar ";
@@ -100,14 +99,15 @@ app.controller("formController", [
       $scope.showButtons = !$scope.showButtons;
     }
     $scope.reset = () => {
+      console.log($scope.master);
       console.log("reset");
       $scope.contacts = [];
-      $scope.user = {};
-      $scope.updateValues = {};
+      $scope.user = angular.copy($scope.master);
+      $scope.updateValues = angular.copy($scope.master);
     };
     $scope.save = (user, comp, reset) => {
       if (reset) {
-        user = {};
+        user = angular.copy($scope.master);
       }
 
       if ($rootScope.name != "") {
@@ -122,10 +122,8 @@ app.controller("formController", [
           if ($scope.savedCompanies.length > 0) {
             $scope.user.contacts = $scope.contacts;
           }
-          $scope.master = angular.copy(user);
           $scope.savedCompanies.push(user);
         } else {
-          $scope.master = angular.copy(user);
           $scope.savedClients.push(user);
         }
       }

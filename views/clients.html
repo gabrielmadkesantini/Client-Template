@@ -9,7 +9,7 @@
 </div>
 
 <div class="listClients">
-  <div class="gridTitles">
+  <div class="gridTitlesClients">
     <p class="grid-tile">Nome</p>
     <p class="grid-tile">Código</p>
     <p class="grid-tile">Endereço</p>
@@ -17,7 +17,7 @@
   </div>
   <div
     ng-repeat="x in savedClients | filter:search"
-    class="gridTitles"
+    class="gridTitlesClients"
     ng-if="savedClients.length > 0"
   >
     <p class="grid-item">{{x.name}}</p>
@@ -73,7 +73,6 @@
       <div class="createClientTitle">{{text}} cliente</div>
       <div class="createClientimput">
         <input
-          ng-model-options="{ updateOn: 'submit' }"
           type="text"
           id="campoDeTexto"
           name="campoDeTexto"
@@ -84,7 +83,6 @@
       <div class="createClientimput">
         <input
           type="text"
-          ng-model-options="{ updateOn: 'submit' }"
           id="campoDeTexto"
           name="campoDeTexto"
           placeholder="Código"
@@ -95,7 +93,6 @@
         <input
           type="text"
           id="campoDeTexto"
-          ng-model-options="{ updateOn: 'submit' }"
           name="campoDeTexto"
           placeholder="Endereço"
           ng-model="user.address"
@@ -111,7 +108,7 @@
         </button>
         <button
           class="buttonFormCancel"
-          ng-click="openModal('add'); reset()"
+          ng-click="reset(); openModal('add')"
           type="button"
         >
           Cancelar
@@ -163,7 +160,7 @@
         </button>
         <button
           class="buttonFormCancel"
-          ng-click="openModal(); reset()"
+          ng-click="reset(); openModal(); "
           type="button"
         >
           Cancelar
